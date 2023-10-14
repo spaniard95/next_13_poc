@@ -5,10 +5,13 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  <>
-    <div>Header</div>
-    {children}
-    <div>Footer</div>
-  </>;
+  return (
+    <>
+      <div>Header</div>
+      {children}
+      <div>Footer</div>
+    </>
+  );
 };
+
 export default Layout;
