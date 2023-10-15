@@ -4,10 +4,10 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <div>
       <header>Dashboard Header</header>
 
       {children}
-    </html>
+    </div>
   );
 }
