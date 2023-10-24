@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Link from "next/link";
+
 import { ReactNode } from "react";
 
-// These styles apply to every route in the application
 import "./global.css";
+
+import { Header } from "@/components/layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,22 +24,7 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <header>Root Header</header>
-        <nav>
-          <ul>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/dashboard/page1">Page1</Link>
-            </li>
-            <li>
-              <Link href="/dashboard/page2">Page2</Link>
-            </li>
-          </ul>
-        </nav>
-        <div>{test}</div>
-
+        <Header />
         <main>{children}</main>
       </body>
     </html>
