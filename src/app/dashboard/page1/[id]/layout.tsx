@@ -1,4 +1,4 @@
-export default function Page1Layout({
+export default function LessonDrawer({
   children,
 }: {
   children: React.ReactNode;

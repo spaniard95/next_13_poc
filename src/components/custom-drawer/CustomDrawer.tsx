@@ -1,9 +1,10 @@
+"use client";
 import { Lesson } from "@/app/types";
 import React from "react";
 
 interface CustomDrawerProps {
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   lesson: Lesson;
 }
 

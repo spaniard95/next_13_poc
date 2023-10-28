@@ -1,11 +1,18 @@
-import Link from "next/link";
+import { getLessons } from "@/app/api/lessons";
+import { ClickWrapper } from "@/components/click-wrapper";
+import { LessonCard } from "@/components/lesson-card";
 import React from "react";
 
-export default function Page1() {
+export default async function Page1() {
+  const lessons = await getLessons();
+
   return (
     <>
-      <div>page 1</div>
-      <Link href="/dashboard/page1/modalExample">Open Modal</Link>
+      {lessons.map((lesson) => (
+        <ClickWrapper key={lesson.id} path={`page1/${lesson.id}`}>
+          <LessonCard key={lesson.id} lesson={lesson} />
+        </ClickWrapper>
+      ))}
     </>
   );
 }

@@ -4,6 +4,7 @@ import React from "react";
 import { lessons } from "../content";
 import { LessonCard } from "@/components/lesson-card";
 import { CustomDrawer } from "@/components/custom-drawer";
+import { ClickWrapper } from "@/components/click-wrapper";
 
 export default function Page() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
@@ -12,14 +13,16 @@ export default function Page() {
   return (
     <>
       {lessons.map((lesson) => (
-        <LessonCard
+        <ClickWrapper
           key={lesson.id}
-          lesson={lesson}
           onClick={() => {
+            console.log("clicked");
             setSelectedLesson(lesson);
             setIsDrawerOpen(true);
           }}
-        />
+        >
+          <LessonCard key={lesson.id} lesson={lesson} />
+        </ClickWrapper>
       ))}
       <CustomDrawer
         lesson={selectedLesson}
