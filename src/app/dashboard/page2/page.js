@@ -1,5 +1,11 @@
+"use client";
 import React from "react";
 
-export default function Page1() {
-  return <div>page 2</div>;
+import { lessons } from "../content";
+import { LessonCard } from "@/components/lesson-card";
+
+export default function Page() {
+  return lessons.map((lesson) => (
+    <LessonCard key={lesson.id} lesson={lesson} />
+  ));
 }

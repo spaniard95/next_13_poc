@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export function Header() {
+function Header() {
   return (
     <header className="bg-blue-500 text-white py-4">
       <div className="container mx-auto">
@@ -15,3 +15,5 @@ export function Header() {
     </header>
   );
 }
+
+export default Header;
