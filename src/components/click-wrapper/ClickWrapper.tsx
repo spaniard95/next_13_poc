@@ -8,6 +8,7 @@ interface ClickWrapperProps {
   onClick?: () => void;
 }
 
+// bad practise, wrapper for click with useRouter and custom onClick
 const ClickWrapper: React.FC<ClickWrapperProps> = ({
   children,
   path,
@@ -17,7 +18,6 @@ const ClickWrapper: React.FC<ClickWrapperProps> = ({
 
   return (
     <div
-      // fix this
       onClick={
         onClick ||
         (() => {

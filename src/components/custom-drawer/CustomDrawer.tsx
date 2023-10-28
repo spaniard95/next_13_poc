@@ -1,19 +1,24 @@
 "use client";
 import { Lesson } from "@/app/types";
+import { useRouter } from "next/navigation";
+
 import React from "react";
 
 interface CustomDrawerProps {
   open: boolean;
   onClose?: () => void;
   lesson: Lesson;
+  parentIsRSC?: boolean;
 }
 
 const CustomDrawer: React.FC<CustomDrawerProps> = ({
   open,
   onClose,
   lesson,
+  parentIsRSC, // soooo bad
 }) => {
   const { title, category, teachers } = lesson ?? {};
+  const router = useRouter();
   return (
     open && (
       <div className="relative">
@@ -25,7 +30,9 @@ const CustomDrawer: React.FC<CustomDrawerProps> = ({
         >
           <h1>{title}</h1>
           <button
-            onClick={onClose}
+            onClick={
+              !parentIsRSC ? onClose : () => router.push("/dashboard/page1") // really bad
+            }
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
             Close
