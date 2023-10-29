@@ -8,6 +8,7 @@ const Dashboard: React.FC = () => {
         <nav className="flex-row space-x-4">
           <Link href="/dashboard/page1">lessons (route)</Link>
           <Link href="/dashboard/page2">Lessons(client)</Link>
+          <Link href="/dashboard/page3">Lessons (parallel routing)</Link>
         </nav>
       </div>
     </div>

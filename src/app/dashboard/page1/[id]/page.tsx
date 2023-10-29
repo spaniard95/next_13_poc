@@ -17,7 +17,7 @@ export default async function LessonDrawer({
     <>
       {lessons.map((lesson) => (
         // is this wrapper optimal? dont think so
-        // also are these lesson cards also rerendered when we come to this route? probably yes
+        // also are these lesson cards also rerendered again when we come to this route? probably yes
         <ClickWrapper key={lesson.id} path={`${lesson.id}`}>
           <LessonCard key={lesson.id} lesson={lesson} />
         </ClickWrapper>

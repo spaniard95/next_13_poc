@@ -1,4 +1,4 @@
-// this component is rsc and client depending on what the parent is?
+// this component is rsc or client depending on what the parent is?
 import { Lesson } from "@/app/types";
 
 import React from "react";
