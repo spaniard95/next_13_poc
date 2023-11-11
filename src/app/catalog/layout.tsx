@@ -1,11 +1,11 @@
-"use client";
+import { CatalogDrawer } from "@/components/catalog-drawer";
 
-import { useState } from "react";
-
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <div>
-      <div>{children}</div>
-    </div>
-  );
+export default function Page3Layout({
+  children,
+  modal,
+}: {
+  children: React.ReactNode;
+  modal: React.ReactNode;
+}) {
+  return <div className="relative display-flex -mt-2">{children}</div>;
 }

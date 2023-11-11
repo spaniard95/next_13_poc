@@ -1,24 +1,21 @@
-"use client";
+import { NavigationButton } from "@/app/(components)";
+import { getLesson } from "@/app/api/lessons";
 import { Lesson } from "@/app/types";
 
 import React from "react";
 
 interface CatalogDrawerProps {
-  open: boolean;
+  lessonId: string;
 }
+export default async function CatalogDrawer({ lessonId }: CatalogDrawerProps) {
+  const lesson = await getLesson(lessonId);
 
-const CatalogDrawer: React.FC<CatalogDrawerProps> = ({ open = true }) => {
   return (
-    open && (
-      <div
-        className={`absolute top-0 right-0 w-64 bg-gray-200 p-4 transition-transform transform ${
-          open ? "translate-x-0" : "translate-x-full"
-        } h-full shadow-lg z-10`}
-      >
-        Drawer Content
-      </div>
-    )
+    <div
+      className={`absolute top-0 right-0 w-1/3 bg-gray-200 p-4 transition-transform transform translate-x-0" h-full shadow-lg z-10`}
+    >
+      {lesson.title}
+      <NavigationButton path="/catalog" label="Back" />
+    </div>
   );
-};
-
-export default CatalogDrawer;
+}

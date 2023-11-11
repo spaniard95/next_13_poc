@@ -1,21 +1,29 @@
-"use client";
-import { CatalogDrawer } from "@/components/catalog-drawer";
-import React, { useState } from "react";
+import React from "react";
 
-export default function Catalog() {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+import { LessonCard } from "@/components/lesson-card";
+import Link from "next/link";
+import { getLessons } from "@/app/api/lessons";
+import { useSearchParams } from "next/navigation";
+import { CatalogDrawer } from "@/components/catalog-drawer";
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { open: boolean; lessonId: string };
+}) {
+  const { open = false, lessonId = "1" } = searchParams;
+
+  const lessons = await getLessons();
+
   return (
-    <div
-      className="relative display-flex"
-      style={{ minHeight: 2000, maxHeight: 2400 }}
-    >
-      <button
-        onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-        className="absolute top-0 left-0 mt-4 ml-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 focus:outline-none"
-      >
-        {isDrawerOpen ? "Close" : "Open"} Drawer
-      </button>
-      <CatalogDrawer open={isDrawerOpen} />
+    <div className="relative display-flex -mt-2">
+      {lessons.map((lesson) => (
+        <Link key={lesson.id} href={`/catalog?open=true&lessonId=${lesson.id}`}>
+          <LessonCard key={lesson.id} lesson={lesson} />
+        </Link>
+      ))}
+
+      {open && <CatalogDrawer lessonId={lessonId} />}
     </div>
   );
 }
